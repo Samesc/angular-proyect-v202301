@@ -1,0 +1,62 @@
+div{
+  border: 0.5px solid blue;
+}
+
+.encabezadoIzquierdo{
+  background:rgb(255, 228, 196);
+}
+
+.encabezadoDerecho{
+padding-top: 5px;
+  background: rgb(169, 169, 169);
+text-align:center;
+}
+
+.izquierdo{
+  background:rgb(224, 255, 255);
+}
+
+.centro{
+  background: rgb(240, 128, 128);
+}
+
+.derecho{
+  background: rgb(135, 206, 250);
+}
+
+.piePagina{
+  background:rgb(142, 206, 142);
+padding-top: 15px;
+text-align: center;
+}
+
+.textoPiePagina{
+font-size: 0.8rem;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: lightsteelblue;
+  color: steelblue;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+
+.aside {
+  background-color: lightsalmon;
+  padding: 15px;
+  color: darkred;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}

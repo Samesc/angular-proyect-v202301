@@ -1,0 +1,55 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-9 encabezadoIzquierdo">
+      <h2>{{ header }}</h2>
+    </div>
+    <div class="col-md-3 d-none d-md-block encabezadoDerecho">
+      <button class="btn btn-primary">Inicio</button>
+      <button class="btn btn-primary">Contacto</button>
+
+      <button class="btn btn-primary" (click)="setCurrentDate()">
+        Actualizar
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div
+      class="col-xs-12 col-sm-7 col-md-6 col-lg-4 izquierdo"
+      [class]="innerClass"
+    >
+      <ul *ngFor="let menu of menuList">
+        <li>{{ menu }}</li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-4 centro">
+      <h3>Competencia no. 2:</h3>
+      <p>
+        Emplea el lenguaje de programación PHP como herramienta para crear
+        sitios web estáticos adaptables de manera eficiente y profesional.
+      </p>
+      <input
+        type="text"
+        [(ngModel)]="fullName"
+        placeholder="Ingresa nombre completo"
+      />
+      <h1>Hola {{ fullName }}</h1>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 derecho aside">
+      <div *ngFor="let item of textList">
+        <h3>Texto No. {{ item.id }}</h3>
+        <h3>{{ item.text }}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 piePagina">
+      <p class="textoPiePagina">Desarrollado por: ..., {{ currentDate }}</p>
+    </div>
+  </div>
+</div>
