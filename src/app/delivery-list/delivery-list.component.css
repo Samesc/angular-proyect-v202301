@@ -1,0 +1,11 @@
+
+article {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+span {
+  display: inline-block;
+  width: 22%;
+  margin-right: 2%;
+}

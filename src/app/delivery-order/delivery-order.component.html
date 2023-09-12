@@ -1,0 +1,42 @@
+<div class="jumbotron">
+  <h2>Creación de ordenes de entrega</h2>
+
+  <div>
+    <p class="lead">
+      <span>Nombre completo:</span>
+      <input type="text" [(ngModel)]="newDelivery.fullName" required />
+    </p>
+  </div>
+  <div>
+    <p class="lead">
+      <span>Dirección:</span>
+      <input type="text" [(ngModel)]="newDelivery.fullAddress" required />
+    </p>
+  </div>
+
+  <div>
+    <p class="lead">
+      <span>Email:</span>
+      <input type="text" [(ngModel)]="newDelivery.email" required />
+    </p>
+  </div>
+
+  <div>
+    <p class="lead">
+      <span>Descripción:</span>
+      <input type="text" [(ngModel)]="newDelivery.description" required />
+    </p>
+  </div>
+  <div>
+    <h2>Cantidad de ordenes: {{ deliveriesSize }}</h2>
+  </div>
+  <div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="saveNewDeliveryOrder()"
+    >
+      Guardar
+    </button>
+  </div>
+</div>

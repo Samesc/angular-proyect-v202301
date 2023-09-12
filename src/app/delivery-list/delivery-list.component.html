@@ -1,0 +1,10 @@
+<h2>Lista de ordenes</h2>
+
+<div>
+  <article *ngFor="let item of deliveries">
+    <span>{{ item.fullName }} </span>
+    <span>{{ item.fullAddress }} </span>
+    <span>{{ item.email }} </span>
+    <span>{{ item.description }} </span>
+  </article>
+</div>
