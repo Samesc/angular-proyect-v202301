@@ -6,8 +6,12 @@ import { Delivery } from '../data/delivery';
 })
 export class DeliveryService {
   private deliveries: Delivery[];
+  private numberDelivery: number;
+  private date: Date;
   constructor() {
     this.deliveries = [];
+    this.date = new Date();
+    this.numberDelivery = this.date.getFullYear() * 100000;
   }
 
   public getDeliveries() {
@@ -15,7 +19,9 @@ export class DeliveryService {
   }
 
   public setNewDelivery(newDelivery: Delivery) {
+    newDelivery.id = this.numberDelivery;
     this.deliveries.push(newDelivery);
+    this.numberDelivery++;
   }
 
   public getDeliveriesSize() {

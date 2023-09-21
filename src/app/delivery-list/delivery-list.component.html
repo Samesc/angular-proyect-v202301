@@ -2,9 +2,12 @@
 
 <div>
   <article *ngFor="let item of deliveries">
+    <span>{{ item.id }} </span>
+    <span>{{ item.stringTracking }} </span>
     <span>{{ item.fullName }} </span>
     <span>{{ item.fullAddress }} </span>
     <span>{{ item.email }} </span>
     <span>{{ item.description }} </span>
+    <span>{{ item.status }} </span>
   </article>
 </div>
