@@ -1,1 +1,145 @@
-<p>delivry-order-update-status works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="searchDelivery">
+        <form class="d-flex" [formGroup]="searchForm" role="search">
+          <input
+            class="form-control me-2"
+            type="text"
+            placeholder="Buscar paquete"
+            aria-label="Search"
+            formControlName="searchInput"
+          />
+          <button
+            class="btn btn-outline-primary"
+            type="submit"
+            (click)="searchDelivery()"
+          >
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="container-fluid form-div">
+        <article class="card">
+          <div class="card-body">
+            <h5>
+              Número de paquete
+              <span class="text-primary font-weight-bold"
+                >#{{ tempDelivery.id }}</span
+              >
+            </h5>
+            <article class="card">
+              <div class="card-body row">
+                <div class="col">
+                  <strong>Dirección de envío</strong> <br />
+                  {{ tempDelivery.fullAddress }}
+                </div>
+                <div class="col">
+                  <strong>Estado</strong> <br />
+                  {{ tempDelivery.status }}
+                </div>
+                <div class="col">
+                  <strong>Tracking #:</strong> <br />
+                  {{ tempDelivery.stringTracking }}
+                </div>
+              </div>
+            </article>
+            <hr />
+            <div class="container-fluid form-container">
+              <div class="col-md-7 col-lg-8">
+                <h5 class="mb-3">Actualización de orden</h5>
+                <hr class="my-4" />
+                <form [formGroup]="formDeliveryOrderUpdate">
+                  <div class="row g-3">
+                    <div class="col-12">
+                      <label for="firstName" class="form-label"
+                        >Responsable de la actualización</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        formControlName="infoPerson"
+                        required
+                      />
+                      <div
+                        *ngIf="this.formDeliveryOrderUpdate.get('infoPerson')?.errors?.['required']"
+                      >
+                        Valid first name is required.
+                      </div>
+
+                      <div
+                        *ngIf="this.formDeliveryOrderUpdate.get('infoPerson')?.errors?.['pattern']"
+                      >
+                        No se permiten numeros o simbolos
+                      </div>
+
+                      <div
+                        *ngIf="this.formDeliveryOrderUpdate.get('infoPerson')?.errors?.['minlength']"
+                      >
+                        El nombre debe de tener un minimo de dos caracteres
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <label for="validationTextarea" class="form-label"
+                        >Comentario</label
+                      >
+                      <textarea
+                        class="form-control"
+                        id="validationTextarea"
+                        placeholder="Ingresa un comentario
+                        "
+                        formControlName="comment"
+                        required
+                      ></textarea>
+                      <div
+                        *ngIf="this.formDeliveryOrderUpdate.get('comment')?.errors?.['required']"
+                      >
+                        Este campo no puede quedar vacio
+                      </div>
+
+                      <div
+                        *ngIf="this.formDeliveryOrderUpdate.get('comment')?.errors?.['minlength']"
+                      >
+                        Este campo debe de tener un minimo de 20 caracteres
+                      </div>
+
+                      <div
+                        *ngIf="this.formDeliveryOrderUpdate.get('comment')?.errors?.['maxlength']"
+                      >
+                        No se puede pasar de 40 caracteres
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="resultado">{{ resultado }}</div>
+              </div>
+            </div>
+            <hr />
+            <button
+              href="#"
+              class="btn btn-primary"
+              data-abc="true"
+              (click)="updateOrder()"
+              [disabled]="isEnable"
+            >
+              <span>Cambiar estado del pedido a</span>
+            </button>
+            <button
+              href="#"
+              class="btn btn-danger"
+              data-abc="true"
+              (click)="failureOrder()"
+              [disabled]="isEnableFailure"
+            >
+              <span>Cancelar pedido</span>
+            </button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

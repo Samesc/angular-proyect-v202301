@@ -1,0 +1,16 @@
+.form-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+.form-div{
+  margin-top: 32px;
+}
+button{
+  margin: 12px;
+}

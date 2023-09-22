@@ -1,13 +1,46 @@
-<h2>Lista de ordenes</h2>
+<div class="container-fluid">
+  <h2>Lista de ordenes</h2>
+  <div class="table-responsive" id="no-more-tables">
+    <table class="table table-hover">
+      <thead class="table-dark" *ngIf="deliveries.length > 0">
+        <tr>
+          <th>Número de paquete</th>
+          <th>Identificador de seguimiento</th>
+          <th>Usuario</th>
+          <th>Direccion</th>
+          <th>Email</th>
+          <th>Descripción</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="deliveries.length > 0">
+        <tr *ngFor="let item of deliveries">
+          <td data-title="Número de paquete">{{ item.id }}</td>
+          <td data-title="Identificador de seguimiento">
+            {{ item.stringTracking }}
+          </td>
+          <td data-title="Usuario">{{ item.fullName }}</td>
+          <td data-title="Direccion">{{ item.fullAddress }}</td>
+          <td data-title="Email">{{ item.email }}</td>
+          <td data-title="Descripción">{{ item.description }}</td>
+          <td data-title="Estado">{{ item.status }}</td>
+        </tr>
+      </tbody>
 
-<div>
-  <article *ngFor="let item of deliveries">
-    <span>{{ item.id }} </span>
-    <span>{{ item.stringTracking }} </span>
-    <span>{{ item.fullName }} </span>
-    <span>{{ item.fullAddress }} </span>
-    <span>{{ item.email }} </span>
-    <span>{{ item.description }} </span>
-    <span>{{ item.status }} </span>
-  </article>
+      <tbody *ngIf="deliveries.length == 0">
+        <tr>
+          <td data-title="">Sin ordenes</td>
+        </tr>
+      </tbody>
+    </table>
+    <!--article *ngFor="let item of deliveries">
+      <span>{{ item.id }} </span>
+      <span>{{ item.stringTracking }} </span>
+      <span>{{ item.fullName }} </span>
+      <span>{{ item.fullAddress }} </span>
+      <span>{{ item.email }} </span>
+      <span>{{ item.description }} </span>
+      <span>{{ item.status }} </span>
+    </article-->
+  </div>
 </div>

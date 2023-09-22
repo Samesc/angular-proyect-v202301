@@ -7,27 +7,29 @@ import { StatusDelivery } from '../data/status-delivery';
   providedIn: 'root',
 })
 export class DeliveryTrackingService {
-  private deliveryTrack = DeliveryTrack;
   constructor() {}
 
   public updateStatusDelivery(delivery: Delivery) {
-    if (delivery.status == StatusDelivery.init) {
-      delivery.status = StatusDelivery.created;
-    } else if (delivery.status == StatusDelivery.created) {
-      delivery.status = StatusDelivery.procesing;
-    } else if (delivery.status == StatusDelivery.procesing) {
-      delivery.status = StatusDelivery.inTransit;
-    } else if (delivery.status == StatusDelivery.inTransit) {
-      delivery.status = StatusDelivery.delivered;
-    } else {
-      delivery.status = StatusDelivery.delivered;
+    if (delivery.status != StatusDelivery.failure) {
+      if (delivery.status == StatusDelivery.init) {
+        delivery.status = StatusDelivery.created;
+      } else if (delivery.status == StatusDelivery.created) {
+        delivery.status = StatusDelivery.procesing;
+      } else if (delivery.status == StatusDelivery.procesing) {
+        delivery.status = StatusDelivery.inTransit;
+      } else if (delivery.status == StatusDelivery.inTransit) {
+        delivery.status = StatusDelivery.delivered;
+      } else {
+        delivery.status = StatusDelivery.delivered;
+      }
     }
   }
 
   public failureStatusDelivery(delivery: Delivery) {
     if (
       delivery.status != StatusDelivery.created &&
-      delivery.status != StatusDelivery.init
+      delivery.status != StatusDelivery.init &&
+      delivery.status != StatusDelivery.delivered
     ) {
       delivery.status = StatusDelivery.failure;
     }

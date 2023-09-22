@@ -87,6 +87,7 @@ export class DeliveryOrderComponent {
         this.formDeliveryOrder.get('town')?.value! +
         ', ' +
         this.formDeliveryOrder.get('departament')?.value!;
+
       this.newDelivery.description =
         this.formDeliveryOrder.get('description')?.value!;
 

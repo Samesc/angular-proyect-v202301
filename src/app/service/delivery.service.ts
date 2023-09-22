@@ -11,7 +11,7 @@ export class DeliveryService {
   constructor() {
     this.deliveries = [];
     this.date = new Date();
-    this.numberDelivery = this.date.getFullYear() * 100000;
+    this.numberDelivery = this.date.getFullYear() * 100000000;
   }
 
   public getDeliveries() {
@@ -22,6 +22,10 @@ export class DeliveryService {
     newDelivery.id = this.numberDelivery;
     this.deliveries.push(newDelivery);
     this.numberDelivery++;
+  }
+
+  public updateDelivery(delivery: Delivery, indexOf: number) {
+    this.deliveries[indexOf] = delivery;
   }
 
   public getDeliveriesSize() {
