@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Delivery } from '../data/delivery';
 import { DeliveryService } from '../service/delivery.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FormDeliveryValidatorService } from '../service/form-delivery-validator.service';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DeliveryTrackingService } from '../service/delivery-tracking.service';
-
+import '../../assets/smtp.js';
 @Component({
   selector: 'app-delivery-order',
   templateUrl: './delivery-order.component.html',
@@ -60,7 +59,6 @@ export class DeliveryOrderComponent {
 
   constructor(
     private deliveryService: DeliveryService,
-    private formValidatorService: FormDeliveryValidatorService,
     private delivaryTrackingService: DeliveryTrackingService
   ) {
     this.deliveriesSize = deliveryService.getDeliveriesSize();
@@ -91,6 +89,7 @@ export class DeliveryOrderComponent {
       this.newDelivery.description =
         this.formDeliveryOrder.get('description')?.value!;
 
+      this.newDelivery.dateUpdate.push(new Date());
       this.delivaryTrackingService.updateStatusDelivery(this.newDelivery);
       this.delivaryTrackingService.generateStringTracking(this.newDelivery);
 

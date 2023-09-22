@@ -9,6 +9,10 @@ export class Delivery {
   description: String;
   status: StatusDelivery;
 
+  dateUpdate: Date[];
+  commentUpdate: String[];
+  personInfo: String[];
+
   constructor() {
     this.id = 0;
     this.stringTracking = '';
@@ -17,5 +21,8 @@ export class Delivery {
     this.email = '';
     this.description = '';
     this.status = StatusDelivery.init;
+    this.dateUpdate = [];
+    this.commentUpdate = [];
+    this.personInfo = [];
   }
 }

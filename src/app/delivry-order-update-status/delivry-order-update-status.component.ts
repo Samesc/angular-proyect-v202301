@@ -18,6 +18,7 @@ export class DelivryOrderUpdateStatusComponent {
   isEnable: boolean;
   isEnableFailure: boolean;
   tempDeliveryIndex: number;
+  dateUpdate: Date;
 
   protected searchForm = new FormGroup({
     searchInput: new FormControl('', [
@@ -49,6 +50,7 @@ export class DelivryOrderUpdateStatusComponent {
     this.isEnable = true;
     this.isEnableFailure = true;
     this.tempDeliveryIndex = -1;
+    this.dateUpdate = new Date();
   }
 
   public searchDelivery() {
@@ -88,6 +90,14 @@ export class DelivryOrderUpdateStatusComponent {
   public updateOrder() {
     if (this.formDeliveryOrderUpdate.valid) {
       this.resultado = 'Formulario correcto';
+      this.tempDelivery.dateUpdate.push(new Date());
+      this.tempDelivery.commentUpdate.push(
+        this.formDeliveryOrderUpdate.get('comment')?.value!
+      );
+      this.tempDelivery.personInfo.push(
+        this.formDeliveryOrderUpdate.get('infoPerson')?.value!
+      );
+
       this.deliveryTracking.updateStatusDelivery(this.tempDelivery);
       this.deliveryService.updateDelivery(
         this.tempDelivery,
@@ -108,6 +118,18 @@ export class DelivryOrderUpdateStatusComponent {
   public failureOrder() {
     if (this.formDeliveryOrderUpdate.valid) {
       if (this.tempDelivery.status != StatusDelivery.created) {
+        if (this.tempDelivery.status == StatusDelivery.procesing) {
+          this.tempDelivery.dateUpdate.push(new Date());
+          this.tempDelivery.commentUpdate.push('');
+          this.tempDelivery.personInfo.push('');
+        }
+        this.tempDelivery.dateUpdate.push(new Date());
+        this.tempDelivery.commentUpdate.push(
+          this.formDeliveryOrderUpdate.get('comment')?.value!
+        );
+        this.tempDelivery.personInfo.push(
+          this.formDeliveryOrderUpdate.get('infoPerson')?.value!
+        );
         this.deliveryTracking.failureStatusDelivery(this.tempDelivery);
         this.deliveryService.updateDelivery(
           this.tempDelivery,

@@ -36,7 +36,7 @@ export class DeliveryTrackingService {
   }
 
   public generateStringTracking(delivery: Delivery) {
-    const characters = 'qwertyuiopasdfghjklñzxcvbnmQWERTYUIOPASDFGHJKLÑZXCVBNM';
+    const characters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM';
     var stringTracking = '';
     for (let i = 0; i < 12; i++) {
       stringTracking += characters.charAt(
