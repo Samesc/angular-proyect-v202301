@@ -3,7 +3,7 @@ import { Delivery } from '../data/delivery';
 import { DeliveryService } from '../service/delivery.service';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DeliveryTrackingService } from '../service/delivery-tracking.service';
-import '../../assets/smtp.js';
+import emailjs from '@emailjs/browser';
 @Component({
   selector: 'app-delivery-order',
   templateUrl: './delivery-order.component.html',
@@ -94,6 +94,23 @@ export class DeliveryOrderComponent {
       this.delivaryTrackingService.generateStringTracking(this.newDelivery);
 
       this.deliveryService.setNewDelivery(this.newDelivery);
+
+      emailjs.init('uj2gJlltBh7gqOErS');
+      emailjs
+        .send('service_mfx8vja', 'template_edwx0mi', {
+          from_name: 'angularProyect',
+          to_name: this.newDelivery.fullName,
+          to_email: this.newDelivery.email,
+          message: `Tu numero de siguimiento es ${this.newDelivery.stringTracking}`,
+        })
+        .then(
+          (response) => {
+            console.log('SUCCESS!', response.status, response.text);
+          },
+          (err) => {
+            console.log('FAILED...', err);
+          }
+        );
 
       this.newDelivery = new Delivery();
       this.deliveriesSize = this.deliveryService.getDeliveriesSize();
